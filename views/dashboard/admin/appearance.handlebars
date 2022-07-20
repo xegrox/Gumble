@@ -1,0 +1,43 @@
+<div class="h-100">
+  <div class="d-flex h-100" style="gap: 5rem;">
+    <div id="preview" style="aspect-ratio: 9/17;">
+      <div class="border bg_color h-75 overflow-hidden" style="aspect-ratio: 9/17; border-radius: 30px; border-width: 10px !important;">
+        <div class="pri_color" style="height: 3em">
+          <h5 class="m-auto text-center bg-black-50 text-muted" style="line-height: 50px;">Menu</h5>
+        </div>
+        <div class="container row row-cols-2 my-3 gy-4 gx-0">
+          {{#times 6}}
+          <div class="col position-relative" style="height: 100px">
+            <div class="position-absolute translate-middle-x start-50">
+              <div class="bg-dark bg-opacity-10 mb-2" style="height: 5em; width: 5em;"></div>
+              <div class="bg-dark bg-opacity-10" style="height: 0.5em; width: 5em;"></div>
+            </div>
+          </div>
+          {{/times}}
+        </div>
+      </div>
+    </div>
+    <div class="mt-3" _="
+      set :primary to <input[name='primary_color']/> in me
+      set :secondary to <input[name='secondary_color']/> in me
+      set :background to <input[name='background_color']/> in me
+      def previewColors()
+        set pri to .pri_color in #preview
+        set pri's style's backgroundColor to :primary's value
+        set sec to .sec_color in #preview
+        set sec's style's backgroundColor to :secondary's value
+        set bg to .bg_color in #preview
+        set bg's style's backgroundColor to :background's value
+      end
+      init call previewColors() end
+      on input from :primary call previewColors()
+      on input from :secondary call previewColors()
+      on input from :background call previewColors()
+      ">
+      <h5>Colors</h5>
+      {{> colorpicker title='Primary Color' name='primary_color' default='#f0f8ff'}}
+      {{> colorpicker title='Secondary Color' name='secondary_color'}}
+      {{> colorpicker title='Background Color' name='background_color' default='#ffffff'}}
+    </div>
+  </div>
+</div>

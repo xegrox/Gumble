@@ -1,0 +1,54 @@
+<div class="vh-100 d-flex flex-column">
+  <div class="d-flex flex-row-reverse m-3">
+    <i class="ti ti-x ml-auto p-1 rounded-circle bg-light text-muted"></i>
+  </div>
+  <form class="flex-fill d-flex flex-column px-5" method="post" action="/user/feedback" id="feedback_form">
+    <h3>Give feedback</h3>
+    <p class="text-muted">Help us better improve our service</p>
+    <div class="w-full fs-1 text-muted mt-2 mb-5" _="install radio(default: {{defaultVal rating 4}}, name: 'rating', isInteger: true)">
+      {{#each (arr 'sad' 'confuzed' 'empty' 'smile' 'happy')}}
+        <i class="ti ti-mood-{{this}} p-1 rounded-circle" value="{{inc @index}}" _="
+        on toggle(value) toggle .bg-dark .bg-opacity-10 .text-dark
+        "></i>
+      {{/each}}
+      <input class="d-none" type="number" name="rating">
+    </div>
+    <p class="text-muted">Any thoughts you'd like to share?</p>
+    <textarea class="form-control" rows="5" name="content">{{content}}</textarea>
+    <div class="flex-fill"></div>
+    {{#if notifyUpdated}}
+    <div class="d-flex alert alert-success fade show align-items-center" role="alert">
+      <p class="flex-fill m-0">Feedback updated</p>
+      <i class="ti ti-x" data-bs-dismiss="alert" aria-label="Close"></i>
+    </div>
+    {{/if}}
+    {{#if notifyDeleted}}
+    <div class="d-flex alert alert-warning fade show align-items-center" role="alert">
+      <p class="flex-fill m-0">Feedback deleted</p>
+      <i class="ti ti-x" data-bs-dismiss="alert" aria-label="Close"></i>
+    </div>
+    {{/if}}
+    <div class="d-flex gap-4 mb-5">
+      <button type="button" class="flex-fill btn btn-outline-secondary">Cancel</button>
+      {{#if rating}}
+      <div class="btn-group flex-fill">
+        <button type="button" class="btn btn-primary"
+          hx-put="/feedback"
+          _="on change from my form set @disabled to null" disabled>
+          Update
+        </button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item text-danger" hx-delete="/user/feedback">Delete</a>
+        </div>
+      </div>
+      {{else}}
+      <button type="submit" class="flex-fill btn btn-primary">Submit</button>
+      {{/if}}
+    </div>
+  </form>
+</div>
+<template id="noti-template">
+</template>

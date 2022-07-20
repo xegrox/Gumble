@@ -1,0 +1,29 @@
+<div class="h-100 d-flex flex-column align-items-center" style="width: 300px;">
+  {{> logo}}
+  <div class="mb-auto mt-0 align-self-stretch row">
+    {{#each navitems}}
+    <div class="col" _="
+    init
+    set :link to pathname of first <a/> in me
+    if :link is window.location.pathname
+      show .indicator in me
+      add .text-primary to <a/> in me
+    else
+      add .text-muted to <a/> in me
+      add .opacity-50 to <a/> in me
+    end
+    end
+    ">
+      <a class="d-flex py-4 ps-5 align-items-center text-decoration-none" href="{{url}}">
+        <i class="ti ti-{{icon}} fs-2 pe-3"></i>
+        <p class="flex-fill m-0 fs-5">{{name}}</p>
+        <div class="indicator bg-primary align-self-stretch rounded-start" style="width: 0.3rem; display: none"></div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+  <div class="d-flex align-items-center w-100 ps-5 py-4 text-muted" hx-trigger="click" hx-delete="/dashboard/session" hx-swap="none" style="cursor: pointer;">
+    <i class="ti ti-logout rounded-circle p-2 fs-4 bg-dark bg-opacity-10"></i>
+    <p class="ps-3 m-0">Logout</p>
+  </div>
+</div>

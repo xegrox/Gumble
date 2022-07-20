@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/icons/tabler-icons.css">
+<link rel="stylesheet" href="/fonts/organo/organo.css">
+<link rel="stylesheet" href="/fonts/inter/inter.css">
+<link rel="stylesheet" href="/css/styles.css">
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/_hyperscript_w9y.min.js"></script>
+<script src="/js/htmx.min.js"></script>
+<script type="text/hyperscript">
+behavior radio(default, name, isInteger)
+  set :children to <*/> in me
+  set :selected to first <*[value=`${default}`]/> in me
+  set :field to first <input/> in me
+  init
+    send toggle(value: true) to :selected
+    set :field's @value to :selected's @value
+  end
+  on click from :children
+    if :selected is not it
+      send toggle(value: false) to :selected
+      send toggle(value: true) to it
+      set :selected to it
+      set :field's @value to it's @value
+      send change(value: it's @value) to :field
+    end
+end
+</script>

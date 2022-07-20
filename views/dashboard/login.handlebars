@@ -1,0 +1,22 @@
+<form class="top-50 start-50 translate-middle position-absolute row container gap-3" style="max-width: 350px;"
+      hx-post="/dashboard/session" hx-swap="none" hx-indicator=".display-indicator" _="
+  on htmx:responseError
+    add .is-invalid to <input[name='password']/> in me
+  ">
+  <div class="col">{{>logo}}</div>
+  <select class="form-select" name="user">
+    <option value="admin">Admin</option>
+    <option value="clerk">Clerk</option>
+    <option value="kitchen">Kitchen</option>
+  </select>
+  <div class="input-group has-validation p-0">
+    <input class="form-control" type="password" placeholder="Password" name="password" required>
+    <div class="invalid-feedback">
+      Incorrect password
+    </div>
+  </div>
+  <button type="submit" class="col btn btn-primary">
+    <span class="display-indicator spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+    Login
+  </button>
+</form>

@@ -1,0 +1,12 @@
+<div hx-get="/dashboard/kitchen/orders/view" class="h-100" hx-trigger="every 2s, update, load" _="
+set :switch to #priority_switch
+def updateView()
+  set @hx-vals to JSON.stringify({
+    priority: :switch.checked
+  })
+  trigger update
+end
+init call updateView() end
+on change from :switch call updateView()
+">
+</div> 

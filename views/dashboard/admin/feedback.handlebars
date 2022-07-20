@@ -1,0 +1,24 @@
+<div>
+  <div class="row" data-masonry='{"percentPosition": true }'>
+    {{#each feedbacks}}
+    <div class="col-sm-6 col-lg-4">
+      <div class="container rounded-3 bg-white border py-3">
+        <div class="d-flex">
+          <p class="me-auto text-muted" _="
+          init
+          make Date from '{{datetime}}Z' called date
+          set options to {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true}
+          append date.toLocaleString(undefined, options) to me
+          end
+          "></p>
+          <p>
+            {{rating}}/5
+            <i class="ti ti-star"></i>
+          </p>
+        </div>
+        <p class="text-break">{{content}}</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

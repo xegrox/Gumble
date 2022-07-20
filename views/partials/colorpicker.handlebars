@@ -1,0 +1,20 @@
+<div class="d-flex my-4 mx-1" _="
+  set :color_input to <input/> in me
+  set :color_input_bg to .picker-bg in me
+  set :color_input_txt to .picker-text in me
+  def setColor()
+    set :color_input_bg's style's backgroundColor to :color_input's value
+    set :color_input_txt's innerHTML to :color_input's value
+  end
+  init call setColor() end
+  on input from :color_input
+    call setColor()
+  ">
+  <div class="picker-bg float-start border-2 border" style="width: 45px; height: 45px; border-radius: 0.8rem;">
+    <input type="color" class="border-0 opacity-0" style="width: 45px; height: 45px;" name="{{ name }}" value="{{ defaultVal default '#fafafa' }}">
+  </div>
+  <div class="ms-3">
+    <h6 class="mb-0">{{ title }}</h6>
+    <p class="picker-text text-muted mb-0"></p>
+  </div>
+</div>

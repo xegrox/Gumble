@@ -1,0 +1,9 @@
+:root {
+  --bs-body-font-family: "Inter", var(--bs-font-sans-serif);
+  --bs-primary: #797ef6;
+  --bs-primary-rgb: 26, 137, 236;
+}
+
+.display-indicator:not(.htmx-request) {
+  display: none;
+}
