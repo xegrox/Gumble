@@ -1,0 +1,45 @@
+<form class="d-flex flex-column vh-100" action="/user/order" method="post">
+    <div class="card border border-5 vw-100 flex-fill margin" style="width: 18rem;">
+        <div class="row row-cols-2">
+            {{#each products}}
+            <div class="card p-5 col">
+                <label>{{ dataValues.name }}</label>
+                <input type="checkbox" name="{{ dataValues.id }}" value="{{ dataValues.id }}"><br>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+
+    <div class="bg-primary p-4 d-flex justify-content-center gap-5">
+        <button type="" class="btn btn-danger">Cancel</button>
+        <button class="btn btn-primary">View</button>
+        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Finish</button>
+    </div>
+    
+</form>
+
+{{!-- <div>
+    {{#each orders}}
+    <p>{{ dataValues.in_time }}, {{ dataValues.id }}</p>
+    <button hx-delete="/user/order" hx-swap="none" hx-vars="id:{{dataValues.id}}">Delete</button>
+    {{/each}}
+</div> --}}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Order Placed</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You have successfully placed an order
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
