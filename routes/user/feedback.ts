@@ -35,7 +35,7 @@ router.put('/', async (req, res) => {
   feedback.rating = req.body.rating;
   feedback.content = content.length === 0 ? null : content;
   feedback.save();
-  res.set('HX-Redirect', '/feedback?updated=true');
+  res.set('HX-Redirect', '/user/feedback?updated=true');
   res.send();
 })
 
@@ -43,7 +43,7 @@ router.delete('/', async (req, res) => {
   var order = await getDummyOrder()
   var feedback = order.feedback
   await feedback?.destroy()
-  res.set('HX-Redirect', '/feedback?deleted=true');
+  res.set('HX-Redirect', '/user/feedback?deleted=true');
   res.send();
 })
 
