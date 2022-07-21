@@ -1,0 +1,18 @@
+<p class="
+  m-0
+  {{assign 'elapsed' (elapsedMin createdAt)}}
+  {{#if (lte @root.elapsed 10)}}
+    text-success
+  {{else if (lte @root.elapsed 15)}}
+    text-warning
+  {{else}}
+    text-danger
+  {{/if}}
+">
+  {{#if (mt @root.elapsed 60)}}
+    >60
+  {{else}}
+    {{@root.elapsed}}
+  {{/if}}
+    min
+</p>

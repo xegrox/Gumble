@@ -20,7 +20,7 @@
                   <th style="width: 3rem;">{{id}}</th>
                   <td style="width: 4rem">{{../id}}</td>
                   <td>{{product.name}}</td>
-                  <td style="width: 6rem;"></td>
+                  <td style="width: 6rem;">{{>dashboard/kitchen/orders_elapsed_min}}</td>
                   <td style="width: 6rem">
                     <ti class="text-primary ti ti-arrow-right" style="cursor: pointer"
                         hx-put="/dashboard/kitchen/orders/status/{{id}}"
@@ -57,7 +57,7 @@
                   <th style="width: 3rem;">{{id}}</th>
                   <td style="width: 4rem">{{../id}}</td>
                   <td>{{product.name}}</td>
-                  <td style="width: 6rem;"></td>
+                  <td style="width: 6rem;">{{>dashboard/kitchen/orders_elapsed_min}}</td>
                   <td style="width: 6rem">
                     <ti class="text-primary ti ti-arrow-left" style="cursor: pointer"
                         hx-put="/dashboard/kitchen/orders/status/{{id}}"

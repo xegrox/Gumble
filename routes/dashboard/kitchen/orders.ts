@@ -15,7 +15,7 @@ router.get('/', async (req, res) => res.render('dashboard/kitchen/orders', {
 router.get('/view', async (req, res) => {
   let isPriorityView = false
   try { isPriorityView = JSON.parse(req.query.priority as string) } catch {}
-  let view =  isPriorityView ? 'dashboard/kitchen/orders_priority_view' : 'dashboard/kitchen/orders_tables_view'
+  let view = isPriorityView ? 'dashboard/kitchen/orders_priority_view' : 'dashboard/kitchen/orders_tables_view'
   res.render(view, {
     layout: false,
     tables: await Table.findAll({
