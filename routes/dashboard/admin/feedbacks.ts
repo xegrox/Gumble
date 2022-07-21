@@ -1,16 +1,22 @@
 import express from 'express'
 import { Feedback } from 'models/feedback'
+import paginate from 'express-paginate'
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  var feedbacks = await Feedback.findAll();
-  var avg_rating = feedbacks.reduce((acc, obj) => acc + obj.rating, 0) / feedbacks.length;
+router.get('/', paginate.middleware(), async (req, res) => {
+  var result = await Feedback.findAndCountAll({limit: <any>req.query.limit, offset: req.skip});
+  var pageCount = Math.ceil(result.count / <any>req.query.limit)
+  
   res.render('dashboard/admin/feedback', {
-    layout: 'dashboard',
     title: 'Feedbacks',
-    subtitle: avg_rating ? `Average rating: ${avg_rating}/5` : null,
-    feedbacks: feedbacks
+    feedbacks: result.rows,
+    pageCount: pageCount,
+    pages: paginate.getArrayPages(req)(3, pageCount, <any>req.query.page),
+    currentPage: req.query.page,
+    prevUrl: paginate.href(req)(true, {}),
+    nextUrl: paginate.href(req)(false, {})
+    // subtitle: avg_rating ? `Average rating: ${avg_rating}/5` : null,
   });
 })
 

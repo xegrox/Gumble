@@ -1,7 +1,7 @@
-<div>
-  <div class="row" data-masonry='{"percentPosition": true }'>
+<div class="d-flex flex-column h-100">
+  <div class="row flex-fill" data-masonry='{"percentPosition": true }'>
     {{#each feedbacks}}
-    <div class="col-sm-6 col-lg-4">
+    <div class="col-sm-6 col-lg-4 my-3">
       <div class="container rounded-3 bg-white border py-3">
         <div class="d-flex">
           <p class="me-auto text-muted" _="
@@ -21,4 +21,18 @@
     </div>
     {{/each}}
   </div>
+
+  <nav aria-label="..." class="align-self-center">
+    <ul class="pagination">
+      <li class="page-item {{#if (ne paginate.hasPreviousPages true)}}disabled{{/if}}">
+        <a class="page-link" href="{{prevUrl}}">Previous</a>
+      </li>
+      {{#each pages}}
+      <li class="page-item {{#if (eq number @root.currentPage)}}active{{/if}}"><a class="page-link" href="{{url}}">{{number}}</a></li>
+      {{/each}}
+      <li class="page-item {{#if (ne (paginate.hasNextPages pageCount) true)}}disabled{{/if}}">
+        <a class="page-link" href="{{nextUrl}}">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>

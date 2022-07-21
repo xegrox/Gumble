@@ -13,7 +13,8 @@ const lt = (a: any, b: any) => a < b
 const lte = (a: any, b: any) => a <= b
 const mt = (a: any, b: any) => a > b
 const mte = (a: any, b: any) => a >= b
+const ne = (a: any, b: any) => a != b
 const elapsedMin = (a: Date) => Math.floor(((new Date()).getTime() - a.getTime()) / 60000)
 const assign = (name: string, value: any, opts: any) => opts.data.root[name] = value
 
-export default { times, defaultVal, arr, inc, eq, lt, lte, mt, mte, elapsedMin, assign }
+export default { times, defaultVal, arr, inc, eq, lt, lte, mt, mte, ne, elapsedMin, assign }
