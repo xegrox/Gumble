@@ -1,4 +1,37 @@
 <div class="d-flex flex-column h-100">
+  <div>
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter
+        <i class="ti ti-filter"></i>
+      </button>
+      <div class="dropdown-menu px-3 pb-3" _="on click halt">
+        <form method="get" action="/dashboard/admin/feedbacks">
+          <table class="table align-middle">
+            <tbody>
+              <tr>
+                <td style="width: 8rem;">Date</td>
+                <td>
+                  <div class="d-flex gap-5 align-items-center">
+                    <div class="input-group input-daterange" data-provide="datepicker" style="width: 20rem" data-date-format="yyyy-mm-dd">
+                        <input type="text" name="start" class="form-control" value="{{startDate}}">
+                        <span class="input-group-text">to</span>
+                        <input type="text" name="end" class="form-control" value="{{endDate}}">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-outline-primary btn-sm" _="
+            on click call (my form).submit()
+            ">Apply</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="row flex-fill" data-masonry='{"percentPosition": true }'>
     {{#each feedbacks}}
     <div class="col-sm-6 col-lg-4 my-3">
