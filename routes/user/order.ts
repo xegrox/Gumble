@@ -1,4 +1,5 @@
 import express from 'express'
+import { identity } from 'lodash';
 // import { Feedback } from 'models/feedback'
 import { Order } from 'models/order'
 import { OrderLine } from 'models/order_line';
@@ -25,13 +26,22 @@ router.get('/', async (req, res) => {
 
 });
 
+
 router.post('/', async (req, res) => {
+    console.log(req.body)
     let order = await Order.create({});
-    await OrderLine.create({
-        order_id: order.id,
-        product_id: 1,
-        status: 0
-    })
+    for (var productID in req.body) {
+        console.log(parseInt(req.body[productID]))
+        for (var i = 0;i<parseInt(req.body[productID]); i++) {
+            console.log("test")
+            await OrderLine.create({
+                order_id: order.id,
+                product_id: parseInt(productID),
+                status: 0
+            })
+        }
+    }
+    
     res.redirect('/user/order');
 });
 
