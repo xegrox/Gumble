@@ -1,0 +1,163 @@
+<div class="d-flex vh-100">
+    <!--Food menu-->
+    <div class="h-75">
+        <!--Button row-->
+        <div class="d-flex justify-content-between p-2">
+            <!--Menu dropdown-->
+            <div class="dropdown text-center m-2" id="menus">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    Main Dishes
+                </button>
+                <ul class="dropdown-menu menuSelect">
+                    <li><div class="dropdown-item active" id="men-btn-1">Main Dishes</div></li>
+                    <li><div class="dropdown-item" id="men-btn-2">Appetizers</div></li>
+                    <li><div class="dropdown-item" id="men-btn-3">Drinks</div></li>
+                </ul>
+            </div>
+            <!--Add item-->
+            <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                Add item
+            </button>
+        </div>
+        <!--Items-->
+        <div class="overflow-scroll h-100">
+            <!--Row1-->
+            <div class="d-flex justify-content-around">
+                <!--Item1-->
+                <div class="card m-2">
+                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <div class="card-img-overlay text-end">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal">
+                            Edit
+                        </button>                    
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti Bolognese</h3>
+                        <p class="card-text">$7.20</p>
+                    </div>
+                </div>
+                <!--Item2-->
+                <div class="card m-2">
+                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <div class="card-img-overlay text-end">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal">
+                            Edit
+                        </button>                    
+                    </div>  
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti Bolognese</h3>
+                        <p class="card-text">$7.20</p>
+                    </div>
+                </div>
+            </div>
+            <!--Row2-->
+            <div class="d-flex justify-content-around">
+                <!--Item3-->
+                <div class="card m-2">
+                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <div class="card-img-overlay text-end">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal">
+                            Edit
+                        </button>                    
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti Bolognese</h3>
+                        <p class="card-text">$7.20</p>
+                    </div>
+                </div>
+                <!--Item4-->
+                <div class="card m-2">
+                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <div class="card-img-overlay text-end">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal">
+                            Edit
+                        </button>                    
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti Bolognese</h3>
+                        <p class="card-text">$7.20</p>
+                    </div>
+                </div>
+            </div>
+            <!--Row1-->
+            <div class="d-flex justify-content-around">
+                <!--Item1-->
+                <div class="card m-2">
+                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <div class="card-img-overlay text-end">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal">
+                            Edit
+                        </button>                    
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti Bolognese</h3>
+                        <p class="card-text">$7.20</p>
+                    </div>
+                </div>
+                <!--Item2-->
+                <div class="card m-2">
+                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <div class="card-img-overlay text-end">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal">
+                            Edit
+                        </button>                    
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Spaghetti Bolognese</h3>
+                        <p class="card-text">$7.20</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Add item modal-->
+<div class="modal" id="addItemModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add item</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div id = "addingfood" class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Add picture</button></li>
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Add group name</button></li>
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Add item name</button></li>
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Add item price</button></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button id = "CloseButton1" type="button" class="btn btn-close btn-info position-absolute top-0 end-0" aria-label="Close"></button>
+            </div>
+    </div>
+</div>
+
+<!--Edit item modal-->
+<div class="modal" id="editItemModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit item</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Edit picture</button></li>
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Edit group name</button></li>
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Edit item name</button></li>
+                    <li class="list-group-item"><button type="button" class="btn btn-info">Edit item price</button></li>
+                </ul> 
+            </div>
+            <div class="modal-footer">
+                <button id="EditButton" type="button" class="btn btn-info position-absolute top-0 end-0" data-bs-dismiss="modal">Edit Item</button>
+            </div>
+            <div class="modal-footer">
+                <button id = "CloseButton" type="button" class="btn btn-close btn-info position-absolute top-0 end-0" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./routes/kitchen/dashboard/data.ts"></script>
