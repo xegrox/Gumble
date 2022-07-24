@@ -33,8 +33,8 @@ router.get('/', paginate.middleware(), async (req, res) => {
     let start = safeDate(req.query.startDate as string)
     let end = safeDate(req.query.endDate as string)
     end.setHours(23, 59, 59, 59)
-    where['createdAt'] ??= {}
-    where['createdAt'][Op.between] = [start, end]
+    where['updatedAt'] ??= {}
+    where['updatedAt'][Op.between] = [start.raw, end.raw]
     viewParams['startDate'] = start.format('%Y-%m-%d')
     viewParams['endDate'] = end.format('%Y-%m-%d')
   }
