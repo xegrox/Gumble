@@ -15,10 +15,23 @@ router.get('/', paginate.middleware(), async (req, res) => {
   let viewParams = {}
   let where = {}
 
+  // Rating filter
+  if (req.query.rating) {
+    let split = (req.query.rating as string).split(',')
+    let start = parseInt(split[0])
+    let end = parseInt(split[1])
+    if (isNaN(start)) start = 1
+    if (isNaN(end)) end = 5
+    where['rating'] ??= {}
+    where['rating'][Op.between] = [start, end]
+    viewParams['startRate'] = start
+    viewParams['endRate'] = end
+  }
+
   // Date filter
-  if (req.query.start) {
-    let start = safeDate(req.query.start as string)
-    let end = safeDate(req.query.end as string)
+  if (req.query.startDate) {
+    let start = safeDate(req.query.startDate as string)
+    let end = safeDate(req.query.endDate as string)
     end.setHours(23, 59, 59, 59)
     where['createdAt'] ??= {}
     where['createdAt'][Op.between] = [start, end]

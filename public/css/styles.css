@@ -1,7 +1,11 @@
 :root {
   --bs-body-font-family: "Inter", var(--bs-font-sans-serif);
-  --bs-primary: #797ef6;
+  --bs-primary: #18a9ec;
   --bs-primary-rgb: 26, 137, 236;
+}
+
+.rs-container .rs-selected {
+  background-color: var(--bs-primary);
 }
 
 .display-indicator:not(.htmx-request) {
