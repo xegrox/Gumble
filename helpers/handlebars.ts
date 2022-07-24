@@ -1,3 +1,5 @@
+import { Date as sDate } from 'sugar'
+
 const times = function(n: number, block: any) {
   var accum = '';
   for(var i = 0; i < n; ++i)
@@ -16,5 +18,7 @@ const mte = (a: any, b: any) => a >= b
 const ne = (a: any, b: any) => a != b
 const elapsedMin = (a: Date) => Math.floor(((new Date()).getTime() - a.getTime()) / 60000)
 const assign = (name: string, value: any, opts: any) => opts.data.root[name] = value
+const relDate = (date_str: string) => new sDate(date_str).relative()
+const shortDate = (date_str: string) => new sDate(date_str).short()
 
-export default { times, defaultVal, arr, inc, eq, lt, lte, mt, mte, ne, elapsedMin, assign }
+export default { times, defaultVal, arr, inc, eq, lt, lte, mt, mte, ne, elapsedMin, assign, relDate, shortDate }
