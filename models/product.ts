@@ -7,10 +7,10 @@ export class Product extends Model {
   name: string
 
   @AllowNull(false) @Column
-  description: string
-
-  @AllowNull(false) @Column
   price: number
+  
+  @AllowNull(false) @Column
+  groupname: string
 
   @Column
   image: Buffer
