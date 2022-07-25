@@ -21,6 +21,6 @@ router.use('/', (req, res, next) => {
 })
 
 router.get('/default', (req, res) => res.redirect('tables'))
-router.get('/tables', require('./tables').default)
+router.use('/tables', require('./tables').default)
 
 export default router
