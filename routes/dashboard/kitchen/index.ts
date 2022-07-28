@@ -22,5 +22,6 @@ router.use('/', (req, res, next) => {
 
 router.use('/default', (req, res) => res.redirect('orders'))
 router.use('/orders', require('./orders').default)
+router.use('/product', require('./product').default)
 
 export default router
