@@ -40,7 +40,7 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 
 const SequelizeStore = sessionSequelize(session.Store)
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(session({
   secret: 'qoduhb',
   store: new SequelizeStore({
