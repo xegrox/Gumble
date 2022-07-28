@@ -12,8 +12,6 @@ router.use('/admin', require('./admin').default)
 router.use('/clerk', require('./clerk').default)
 router.use('/kitchen', require('./kitchen').default)
 router.use('/session', require('./session').default)
-router.use('/dashboard', require('./dashboard').default);
-router.use('/user', require('./user').default);
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) res.redirect(p.join(req.baseUrl, req.user as string, 'default').replace(/\\/g, '/'))
