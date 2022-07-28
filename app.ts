@@ -30,6 +30,7 @@ app.use("/js", express.static(path.join(__dirname, "node_modules/jquery/dist/"))
 app.use("/js", express.static(path.join(__dirname, "node_modules/masonry-layout/dist")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/hyperscript.org/dist")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/htmx.org/dist")));
+app.use("/js", express.static(path.join(__dirname, "node_modules/contrast-color/dist")));
 app.use("/icons", express.static(path.join(__dirname, "node_modules/@tabler/icons/iconfont")))
 
 app.engine('handlebars', engine({ 

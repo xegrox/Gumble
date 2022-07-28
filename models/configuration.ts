@@ -15,4 +15,14 @@ export class Configuration extends Model {
 
   @AllowNull(false) @Default(DEFAULT_PASS) @Column
   kitchen_pass: string
+
+  @Default('#ffffff') @Column
+  bg_color: string
+
+  @Default('#80d7ff') @Column
+  pri_color: string
+
+  @Default('#797ef6') @Column
+  sec_color: string
+
 }
