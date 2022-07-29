@@ -12,6 +12,7 @@ import passport from 'passport';
 import sessionSequelize from 'connect-session-sequelize'
 import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access'
 import Handlebars from 'handlebars'
+import cookie from 'cookie-parser'
 
 const app = express();
 const sequelize = new Sequelize({
@@ -31,6 +32,7 @@ app.use("/js", express.static(path.join(__dirname, "node_modules/masonry-layout/
 app.use("/js", express.static(path.join(__dirname, "node_modules/hyperscript.org/dist")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/htmx.org/dist")));
 app.use("/icons", express.static(path.join(__dirname, "node_modules/@tabler/icons/iconfont")))
+app.use(cookie())
 
 app.engine('handlebars', engine({ 
   helpers: helpers,

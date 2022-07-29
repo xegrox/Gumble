@@ -1,0 +1,38 @@
+<script>
+    function ifChecked() {
+        var checkBox = document.getElementById("itemCheckbox");
+        var text = document.getElementById("theButton");
+
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+</script>
+
+<div>
+    <form action="/user/order_view/delete/{{@key}}" method="post"></form>
+    <ul class="list-group list-group-flush">
+        {{#each cart}}
+        <form action="/user/order_view/delete/{{@key}}" method="post">
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" id="itemCheckbox" onclick="ifChecked()">
+                <label class="form-check-label" for="itemCheckbox">{{name}} x{{quantity}}</label>
+                {{!--
+            <li class="list-group-item">Dish: {{name}} Quantity = {{quantity}}
+                reference begins from index.ts --}}
+                <button class="btn btn-danger" type="submit" id="theButton">Delete</button>
+            </li>
+        </form>
+        {{/each}}
+    </ul>
+</div>
+
+<form action="/user/order" method="post">
+    <div class="bg-primary p-4 d-flex justify-content-center gap-5">
+        <a class='btn btn-danger' href="/user/order/delete">Cancel</a>
+        <a type="button" class="btn btn-primary" href='/user/order'>Back</a>
+        <button type="submit" class="btn btn-success">Finish</button>
+    </div>
+</form>

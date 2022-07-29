@@ -28,11 +28,11 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
+    console.log(req.cookies)
     let order = await Order.create({});
-    for (var productID in req.body) {
-        console.log(parseInt(req.body[productID]))
-        for (var i = 0;i<parseInt(req.body[productID]); i++) {
+    for (var productID in req.cookies) {
+        console.log(parseInt(req.cookies[productID]))
+        for (var i = 0;i<parseInt(req.cookies[productID]); i++) {
             console.log("test")
             await OrderLine.create({
                 order_id: order.id,
@@ -41,24 +41,22 @@ router.post('/', async (req, res) => {
             })
         }
     }
-    
+    for (var id in req.cookies) {
+        res.clearCookie(id)
+    }
     res.redirect('/user/order');
 });
 
-// router.put('/', async (req, res) => {
-//     var feedback = order.feedback
-//     if (feedback == null) return
-//     var content = req.body.content.trim();
-//     feedback.rating = req.body.rating;
-//     feedback.content = content.length === 0 ? null : content;
-//     feedback.save();
-//     res.set('HX-Redirect', '/feedback?updated=true');
-//     res.send();
-// })
+router.get('/delete', (req, res) => {
+    for (var id in req.cookies) {
+        res.clearCookie(id)
+    }
+    res.redirect('/user/order');
+})
 
 router.delete('/', async (req, res) => {
     console.log("test")
-    await (await Order.findByPk(req.body.id)).destroy()
+    await (await Order.findByPk(req.cookies.id)).destroy()
     res.set('HX-Redirect', '/user/order');
     res.send();
 })

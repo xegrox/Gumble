@@ -1,14 +1,15 @@
-<form class="d-flex flex-column vh-100" action="/user/order" method="post">
+<form class="d-flex flex-column vh-100" action="/user/order_view" method="post">
     <div class="card border border-5 vw-100 flex-fill margin" style="width: 18rem;">
         <div class="row row-cols-2">
             {{#each products}}
             <div class="card p-5 col d-flex flex-column align-item-center">
                 <label class="text-center">{{ dataValues.name }}</label>
                 {{#if image}}
-                    <label><img src="data:image/png;base64,{{ convertToBase64 dataValues.image }}" alt="Image"></label>
+                    {{!-- <label><img src="data:image/png;base64,{{ convertToBase64 dataValues.image }}" alt="Image"></label> --}}
+                    <label><img src="{{image }}" alt="Image"></label>
                 {{/if}}
-                <input type="checkbox" value="{{ dataValues.id }}" _="
-                set :elem to <input[type='number']/>
+                <input type="checkbox" _="
+                set :elem to <input[name='{{ id }}']/>
                 set :selected to false
                 init hide :elem end
                 on change from me
@@ -26,10 +27,9 @@
     </div>
 
     <div class="bg-primary p-4 d-flex justify-content-center gap-5">
-        <button type="" class="btn btn-danger">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="location.href=''">View</button>
-        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Finish</button>
-        <a href=""></a>
+        <a class='btn btn-danger' href="/user/order/delete">Cancel</a>
+        <a type="button" class="btn btn-primary" href='/user/order_view'>View</a>
+        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
     </div>  
     
 </form>
