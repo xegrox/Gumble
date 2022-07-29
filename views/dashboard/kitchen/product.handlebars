@@ -35,7 +35,7 @@
         {{#each products}}
             <div class="d-flex justify-content-around col">
                 <div class="card m-2">
-                    <img class="card-img-top" src="https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese-1200x900.jpg" alt="Spaghetti Bolognese">
+                    <img class="card-img-top" src="{{image}}" alt="Spaghetti Bolognese">
                     <div class="card-img-overlay text-end">
                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal{{id}}">Edit</button>                    
                     </div>
@@ -57,7 +57,17 @@
                             <div class="list-group">
                                 <li class="list-group-item">
                                     <label for="imageFile">Edit Image</label>
-                                    <input type="file" capture="environment" accept="image/*" name="image"> 
+                                    <input type="file" id="imageFile" capture="environment" accept="image/*" _="
+                                    def updateInp(evt)
+                                      set inp to <input[name='image']/> in my parentElement
+                                      set @value of inp to evt.target.result
+                                    end
+                                    on change
+                                      make FileReader called fr
+                                      call fr.addEventListener('load', updateInp)
+                                      call fr.readAsDataURL(my files[0])
+                                    "> 
+                                    <input type="hidden" name="image">
                                 </li>
                                 <li class="list-group-item">
                                     <input type="text" id="editGroupName" placeholder="Edit Group Name" name="groupname"> 
@@ -93,7 +103,17 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <label for="imageFile">Add Image</label>
-                        <input type="file" id="imageFile" capture="environment" accept="image/*" name="image"> 
+                        <input type="file" id="imageFile" capture="environment" accept="image/*" _="
+                        def updateInp(evt)
+                          set inp to <input[name='image']/> in my parentElement
+                          set @value of inp to evt.target.result
+                        end
+                        on change
+                          make FileReader called fr
+                          call fr.addEventListener('load', updateInp)
+                          call fr.readAsDataURL(my files[0])
+                        "> 
+                        <input type="hidden" name="image">
                     </li>
                     <li class="list-group-item">
                         <input type="text" id="insertGroupName" placeholder="Insert Group Name" name="groupname" required> 

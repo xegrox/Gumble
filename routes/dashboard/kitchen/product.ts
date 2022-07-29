@@ -12,7 +12,7 @@ router.get('/', async(req, res) => {
 
 router.post('/', async (req, res) =>{
     await Product.create({
-        // image: req.body.image, 
+        image: req.body.image,
         groupname: req.body.groupname, 
         name: req.body.name,
         price: req.body.price,   
@@ -23,6 +23,7 @@ router.post('/', async (req, res) =>{
 router.post('/:id', async (req, res) =>{
     var product = await Product.findByPk(req.params.id)
     await product.update({
+        image: req.body.image,
         groupname: req.body.groupname,
         name: req.body.name,
         price: req.body.price,

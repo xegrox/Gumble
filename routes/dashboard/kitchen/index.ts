@@ -14,7 +14,7 @@ router.use('/', (req, res, next) => {
     {
       icon: 'tools-kitchen-2',
       name: 'Food menu',
-      url: 'invoices'
+      url: 'product'
     }
   ]
   return next()
@@ -22,5 +22,6 @@ router.use('/', (req, res, next) => {
 
 router.use('/default', (req, res) => res.redirect('orders'))
 router.use('/orders', require('./orders').default)
+router.use('/product', require('./product').default)
 
 export default router
