@@ -14,7 +14,7 @@ router.use('/', (req, res, next) => {
     {
       icon: 'tools-kitchen-2',
       name: 'Food menu',
-      url: 'invoices'
+      url: 'product'
     }
   ]
   return next()
