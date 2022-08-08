@@ -1,5 +1,6 @@
-import { AllowNull, BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript'
+import { BelongsTo, ForeignKey, Model, Table } from 'sequelize-typescript'
 import { Order } from './order'
+import { OrderStatus } from './order_status'
 import { Product } from './product'
 
 @Table
@@ -10,7 +11,7 @@ export class OrderLine extends Model {
   @BelongsTo(() => Order)
   order: Order
 
-  @AllowNull(false) @Column
+  @ForeignKey(() => OrderStatus)
   status: number
 
   @ForeignKey(() => Product)

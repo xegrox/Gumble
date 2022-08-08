@@ -13,6 +13,7 @@ import sessionSequelize from 'connect-session-sequelize'
 import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access'
 import Handlebars from 'handlebars'
 import cookie from 'cookie-parser'
+import { OrderStatus } from 'models/order_status';
 
 const app = express();
 const sequelize = new Sequelize({
@@ -22,6 +23,20 @@ const sequelize = new Sequelize({
   modelMatch: (filename, member) => _.upperFirst(_.camelCase(filename)) === member
 });
 Configuration.afterSync(() => Configuration.create({}, {ignoreDuplicates: true}).then())
+OrderStatus.afterSync(() => OrderStatus.bulkCreate([
+  {
+    id: 0,
+    description: 'pending'
+  },
+  {
+    id: 1,
+    description: 'ongoing'
+  },
+  {
+    id: 2,
+    description: 'done'
+  }
+], {ignoreDuplicates: true}).then())
 sequelize.sync()
 
 app.use(express.static(path.join(__dirname, 'public')));
