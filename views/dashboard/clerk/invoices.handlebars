@@ -1,0 +1,62 @@
+<div class="row">
+  {{#each tables}}
+  <div class="d-flex border rounded-3 card p-3 m-4 flex-nowrap flex-row align-items-center
+    {{#unless invoice}}opacity-50{{/unless}}
+    " style="width: 25rem;">
+    <p class="m-0 w-25 fw-semibold">Table {{id}}</p>
+    {{#if invoice}}
+      <p class="text-success m-0">${{invoice.total}}</p>
+    {{else}}
+      <p class="text-primary m-0">clear</p>
+    {{/if}}
+    <button
+      class="btn btn-sm ms-auto btn-outline-primary" 
+      {{#unless invoice}}disabled{{/unless}}
+      data-bs-toggle="modal" data-bs-target="#modal_{{id}}">
+      View
+    </button>
+  </div>
+  {{/each}}
+</div>
+
+
+{{#each tables}}
+{{#if invoice}}
+<div class="modal fade" id="modal_{{id}}" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Invoice Table {{id}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Qty</th>
+              <th scope="col">Item</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each invoice.products}}
+              <tr>
+                <td>{{quantity}}</td>
+                <td>{{@key}}</td>
+                <td>${{price}}{{#if (mt quantity 1)}} &#215 {{quantity}}{{/if}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form method="post" action="/dashboard/clerk/invoices/clear/{{id}}">
+          <button type="submit" class="btn btn-primary">Clear Table</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/each}}
