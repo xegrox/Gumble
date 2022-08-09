@@ -58,6 +58,7 @@
       {{> chip name=(add 'Rating ' startRate ' - ' endRate) onclose='call removeParams("rating")'}}
     {{/if}}
   </div>
+  {{#if feedbacks.length}}
   <div class="row flex-fill" data-masonry='{"percentPosition": true }'>
     {{#each feedbacks}}
     <div class="col-sm-6 col-lg-4 my-3">
@@ -88,6 +89,12 @@
       </li>
     </ul>
   </nav>
+  {{else}}
+  <div class="flex-fill d-flex align-items-center justify-content-center gap-2">
+    <h4 class="m-0">No results matching query</h4>
+    <i class="ti ti-search fs-3"></i>
+  </div>
+  {{/if}}
 </div>
 
 <script>
