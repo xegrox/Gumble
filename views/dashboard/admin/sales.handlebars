@@ -1,0 +1,66 @@
+<div>
+  <canvas id="myChart"></canvas>
+  <form class="card p-3 d-flex flex-row align-items-center rounded-3 mt-5">
+    <h6 class="m-0">Month range</h6>
+    <div class="input-group input-daterange ms-auto me-auto" style="width: 20rem;" data-provide="datepicker" data-date-format="yyyy-mm">
+      <input type="text" name="startDate" class="form-control datepicker" value="{{startDate}}">
+      <span class="input-group-text">to</span>
+      <input type="text" name="endDate" class="form-control datepicker" value="{{endDate}}">
+    </div>
+    <button type="submit" class="btn btn-primary">Apply</button>
+  </form>
+</div>
+
+<script>
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+
+  const data = {
+    datasets: [{
+      label: 'Revenue',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: {{{data}}}
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+    scales: {
+        y: {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function(value, index, ticks) {
+              return '$' + value;
+            }
+          }
+        }
+      }
+    }
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+  $(".datepicker").datepicker( {
+    format: "yyyy-mm",
+    startView: "months", 
+    minViewMode: "months"
+  });
+</script>

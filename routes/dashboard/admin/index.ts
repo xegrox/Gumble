@@ -33,5 +33,6 @@ router.use('/', (req, res, next) => {
 router.get('/default', (req, res) => res.redirect('feedbacks'))
 router.use('/feedbacks', require('./feedbacks').default)
 router.use('/appearance', require('./appearance').default)
+router.use('/sales', require('./sales').default)
 
 export default router
