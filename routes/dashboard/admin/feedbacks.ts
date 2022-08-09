@@ -35,8 +35,8 @@ router.get('/', paginate.middleware(), async (req, res) => {
     end.setHours(23, 59, 59, 59)
     where['updatedAt'] ??= {}
     where['updatedAt'][Op.between] = [start.raw, end.raw]
-    viewParams['startDate'] = start.format('%Y-%m-%d')
-    viewParams['endDate'] = end.format('%Y-%m-%d')
+    viewParams['startDate'] = start.format('%m/%d/%Y')
+    viewParams['endDate'] = end.format('%m/%d/%Y')
   }
 
   var result = await Feedback.findAndCountAll({

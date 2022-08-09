@@ -1,5 +1,5 @@
 <div class="d-flex flex-column h-100">
-  <div>
+  <div class="d-flex gap-3">
     <div class="dropdown">
       <button class="btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Filter
@@ -32,7 +32,7 @@
                   <td style="width: 8rem;">Date</td>
                   <td>
                     <div class="d-flex gap-5 align-items-center">
-                      <div class="input-group input-daterange" data-provide="datepicker" style="width: 20rem" data-date-format="yyyy-mm-dd">
+                      <div class="input-group input-daterange" data-provide="datepicker" style="width: 20rem" data-date-format="mm/dd/yyyy">
                           <input type="text" name="startDate" class="form-control" value="{{startDate}}">
                           <span class="input-group-text">to</span>
                           <input type="text" name="endDate" class="form-control" value="{{endDate}}">
@@ -51,6 +51,12 @@
         </div>
       </div>
     </div>
+    {{#if startDate}}
+      {{> chip name=(add startDate ' - ' endDate) onclose='call removeParams("startDate", "endDate")'}}
+    {{/if}}
+    {{#if startRate}}
+      {{> chip name=(add 'Rating ' startRate ' - ' endRate) onclose='call removeParams("rating")'}}
+    {{/if}}
   </div>
   <div class="row flex-fill" data-masonry='{"percentPosition": true }'>
     {{#each feedbacks}}
@@ -83,3 +89,12 @@
     </ul>
   </nav>
 </div>
+
+<script>
+  function removeParams(...p) {
+    const url = new URL(document.URL)
+    const params = url.searchParams
+    p.forEach((v) => params.delete(v))
+    window.location = url.toString()
+  }
+</script>

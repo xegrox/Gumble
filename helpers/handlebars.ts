@@ -21,5 +21,6 @@ const elapsedMin = (a: Date) => Math.floor(((new Date()).getTime() - a.getTime()
 const assign = (name: string, value: any, opts: any) => opts.data.root[name] = value
 const relDate = (date_str: string) => new sDate(date_str).relative()
 const shortDate = (date_str: string) => new sDate(date_str).short()
+const add = (...a: any[]) => arr(...a).reduce((b, c) => b + c)
 
-export default { times, defaultVal, arr, inc, eq, lt, lte, mt, mte, ne, elapsedMin, assign, relDate, shortDate, twodecimal }
+export default { times, defaultVal, arr, inc, eq, lt, lte, mt, mte, ne, elapsedMin, assign, relDate, shortDate, twodecimal, add }
