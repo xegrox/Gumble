@@ -42,8 +42,9 @@
                 </tr>
               </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-outline-primary btn-sm" _="
+            <div class="d-flex justify-content-end gap-2">
+              <button class="btn btn-outline-secondary btn-sm" _="on click removeParams()">Reset</button>
+              <button class="btn btn-primary btn-sm" _="
               on click call (my form).submit()
               ">Apply</button>
             </div>
@@ -90,9 +91,12 @@
     </ul>
   </nav>
   {{else}}
-  <div class="flex-fill d-flex align-items-center justify-content-center gap-2">
-    <h4 class="m-0">No results matching query</h4>
-    <i class="ti ti-search fs-3"></i>
+  <div class="flex-fill d-flex flex-column align-items-center justify-content-center gap-2">
+    <div class="d-flex gap-2">
+      <h4 class="m-0">No results matching query</h4>
+      <i class="ti ti-search fs-3"></i>
+    </div>
+    <a href="#" _="on click call removeParams()">Reset query</a>
   </div>
   {{/if}}
 </div>
@@ -101,6 +105,7 @@
   function removeParams(...p) {
     const url = new URL(document.URL)
     const params = url.searchParams
+    if (p.length == 0) p = [...params.keys()]
     p.forEach((v) => params.delete(v))
     window.location = url.toString()
   }
