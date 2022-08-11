@@ -1,5 +1,6 @@
-import { AllowNull, Column, HasMany, Model, Table } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { OrderLine } from "./order_line";
+import { Category } from "./category";
 
 @Table
 export class Product extends Model {
@@ -17,4 +18,10 @@ export class Product extends Model {
 
   @HasMany(() => OrderLine)
   order_lines: OrderLine[]
+
+  @BelongsTo(() => Category)
+  category: Category
+
+  @ForeignKey(() => Category)
+  category_id: number
 }
