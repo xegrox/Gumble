@@ -25,4 +25,6 @@ export class Configuration extends Model {
   @Default('#797ef6') @Column
   sec_color: string
 
+  @Column
+  recovery_email: string
 }

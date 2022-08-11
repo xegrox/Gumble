@@ -34,5 +34,6 @@ router.get('/default', (req, res) => res.redirect('feedbacks'))
 router.use('/feedbacks', require('./feedbacks').default)
 router.use('/appearance', require('./appearance').default)
 router.use('/sales', require('./sales').default)
+router.use('/passwords', require('./passwords').default)
 
 export default router

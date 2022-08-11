@@ -4,6 +4,11 @@ import { Configuration } from 'models/configuration'
 import { Strategy } from 'passport-local'
 import { UserTypes } from './constants'
 
+export function encodePassword(pass: string) {
+  let salt = bcrypt.genSaltSync()
+  return bcrypt.hashSync(pass, salt)
+}
+
 export function configurePassport() {
   passport.use(new Strategy({
     usernameField: 'user',
