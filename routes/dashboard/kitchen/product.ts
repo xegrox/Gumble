@@ -31,5 +31,12 @@ router.post('/:id', async (req, res) =>{
     res.redirect('/dashboard/kitchen/product')
 })
 
+router.post('/:id', async (req, res) =>{
+    await Category.create({
+        category: req.body.category,
+    })
+    res.redirect('/dashboard/kitchen/product/category')
+})
+
 export default router;
 
