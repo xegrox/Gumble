@@ -10,9 +10,6 @@ export class Product extends Model {
   @AllowNull(false) @Column
   price: number
   
-  @AllowNull(false) @Column
-  groupname: string
-
   @Column
   image: Buffer
 
@@ -25,3 +22,4 @@ export class Product extends Model {
   @ForeignKey(() => Category)
   category_id: number
 }
+
