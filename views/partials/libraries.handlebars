@@ -33,4 +33,15 @@ behavior radio(default, name, isInteger)
     end
   end
 end
+
+behavior repeatPassword()
+  set :pass to first <input[name='password']/> in me
+  set :pass_rep to first <input[name='password_rep']/> in me
+  on submit
+    if :pass_rep's value != :pass's value
+      add .is-invalid to :pass_rep
+      halt
+    end
+  end
+end
 </script>

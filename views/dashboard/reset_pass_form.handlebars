@@ -1,18 +1,10 @@
 {{#if valid}}
-<form id="form" class="top-50 start-50 translate-middle position-absolute row container gap-3" style="max-width: 350px;" method="post" _="
-set :pass to first <input[name='password']/> in me
-set :pass_rep to first .pass_rep in me
-on submit
-  if :pass_rep's value != :pass's value
-    add .is-invalid to :pass_rep
-    halt
-  end
-">
+<form id="form" class="top-50 start-50 translate-middle position-absolute row container gap-3" style="max-width: 350px;" method="post" _="install repeatPassword">
   <h4 class="text-center">Reset <span style="text-decoration: underline; text-decoration-color: var(--bs-primary);">admin</span> password</h4>
   <input type="hidden" name="token" value="{{token}}">
   <input class="form-control" type="password" placeholder="Password" name="password" required>
   <div class="input-group has-validation p-0">
-    <input class="form-control pass_rep" type="password" placeholder="Repeat Password" required>
+    <input class="form-control" type="password" placeholder="Repeat Password" name="password_rep" required>
     <div class="invalid-feedback">
       Passwords do not match
     </div>

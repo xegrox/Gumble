@@ -18,4 +18,9 @@ router.post('/recovery_email', async (req, res) => {
   res.redirect('/dashboard/admin/passwords')
 })
 
+router.post('/change_kitchen', async (req, res) => {
+  let config = await Configuration.findOne()
+  res.redirect('/dashboard/admin/passwords')
+})
+
 export default router
