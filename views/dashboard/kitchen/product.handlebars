@@ -7,10 +7,8 @@
                 </button>
                 <ul class="dropdown-menu menuSelect">
                     <li>
-                        {{#each Category}}
-                        <div class="dropdown-item active" id="categories">
-                            {{category}}    
-                        </div>
+                        {{#each categories}}
+                            <a class="dropdown-item" href="/dashboard/kitchen/product?category={{category}}">{{category}}</a>
                         {{/each}}
                     </li>
                 </ul>
@@ -26,7 +24,7 @@
         {{#each products}}
             <div class="d-flex justify-content-around col">
                 <div class="card m-2">
-                    <img class="card-img-top" src="{{image}}" alt="Spaghetti Bolognese">    
+                    <img class="card-img-top" src="{{image}}" alt="Food">
                     <div class="card-img-overlay text-end">
                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal{{id}}">Edit</button>                    
                     </div>
@@ -39,7 +37,7 @@
 
             <div class="modal" id="editItemModal{{id}}">
                 <div class="modal-dialog modal-dialog-centered">
-                    <form action="/dashboard/kitchen/product/{{id}}" method="POST" class="modal-content">
+                    <form action="/dashboard/kitchen/product/{{id}}w" method="POST" class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Edit item</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -61,25 +59,19 @@
                                     <input type="hidden" name="image">
                                 </li>
                                 <li class="list-group-item">
-                                    <input type="text" id="editGroupName" placeholder="Edit Group Name" name="groupname"> 
-                                </li>
-                                <li class="list-group-item">
                                     <input type="text" step="" id="editItemName" placeholder="Edit Item Name" name="name"> 
                                 </li>
                                 <li class="list-group-item">
                                     <input type="number" step="0.01" id="editItemPrice" placeholder="Edit Item Price" name="price"> 
                                 </li>
                                 <li class="list-group-item">
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                            <ul class="dropdown-menu">
-                                                {{#each Category}}
-                                                <li>
-                                                    {{category}}
-                                                </li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
+                                    <div class="dropdown">
+                                        <select>
+                                            {{#each categories}}
+                                                <option>{{category}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
                                 </li>
                             </div> 
                         </div>
@@ -118,25 +110,19 @@
                         <input type="hidden" name="image">
                     </li>
                     <li class="list-group-item">
-                        <input type="text" id="insertGroupName" placeholder="Insert Group Name" name="groupname" required> 
-                    </li>
-                    <li class="list-group-item">
                         <input type="text" step="" id="addItemName" placeholder="Add Item Name" name="name" required> 
                     </li>
                     <li class="list-group-item">
                         <input type="number" step="0.01" id="addItemPrice" placeholder="Add Item Price" name="price" required> 
                     </li>
                     <li class="list-group-item">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                <ul class="dropdown-menu">
-                                    {{#each Category}}
-                                    <li>
-                                        {{category}}
-                                    </li>
-                                    {{/each}}
-                                </ul>
-                            </div>
+                        <div class="dropdown">
+                            <select>
+                                {{#each categories}}
+                                    <option>{{category}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
                     </li>
                 </ul>
                 <div class="modal-footer">
@@ -153,8 +139,8 @@
             <div class="modal-header">
                 <h4 class="modal-title">Add Category</h4>
             </div>
-            <form id ="addcategory" action="/dashboard/kitchen/product" method="POST" class="modal-body">
-                <input  type="text" step="" id="addCategory" placeholder="Add Category" name="Category" required>
+            <form id ="addcategory" action="/dashboard/kitchen/product/category" method="POST" class="modal-body">
+                <input type="text" step="" id="addCategory" placeholder="Add Category" name="Category" required>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info position absolute bottom-0 end-0">Add</button>
                 </div>
