@@ -1,8 +1,11 @@
-import { Column, Table as T, HasOne, Model, BelongsTo, ForeignKey } from 'sequelize-typescript';
+import { Column, Table as T, Model, BelongsTo, ForeignKey, PrimaryKey } from 'sequelize-typescript';
 import { Order } from './order'
 
 @T
 export class Table extends Model {
+  @PrimaryKey @Column
+  table_no: number
+
   @Column
   capacity: number
 

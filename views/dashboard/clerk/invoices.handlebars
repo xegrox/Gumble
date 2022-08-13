@@ -3,7 +3,7 @@
   <div class="d-flex border rounded-3 card p-3 m-4 flex-nowrap flex-row align-items-center
     {{#unless invoice}}opacity-50{{/unless}}
     " style="width: 25rem;">
-    <p class="m-0 w-25 fw-semibold">Table {{id}}</p>
+    <p class="m-0 w-25 fw-semibold">Table {{table_no}}</p>
     {{#if invoice}}
       <p class="text-success m-0">${{invoice.total}}</p>
     {{else}}
@@ -12,7 +12,7 @@
     <button
       class="btn btn-sm ms-auto btn-outline-primary" 
       {{#unless invoice}}disabled{{/unless}}
-      data-bs-toggle="modal" data-bs-target="#modal_{{id}}">
+      data-bs-toggle="modal" data-bs-target="#modal_{{table_no}}">
       View
     </button>
   </div>
@@ -22,11 +22,11 @@
 
 {{#each tables}}
 {{#if invoice}}
-<div class="modal fade" id="modal_{{id}}" tabindex="-1">
+<div class="modal fade" id="modal_{{table_no}}" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Invoice Table {{id}}</h5>
+        <h5 class="modal-title">Invoice Table {{table_no}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -51,7 +51,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <form method="post" action="/dashboard/clerk/invoices/clear/{{id}}">
+        <form method="post" action="/dashboard/clerk/invoices/clear/{{table_no}}">
           <button type="submit" class="btn btn-primary">Clear Table</button>
         </form>
       </div>

@@ -1,0 +1,31 @@
+<div class="row row-cols-auto gap-5">
+  {{#each tables}}
+  <div class="col card p-2 d-flex flex-column align-items-center" style="width: 15rem; height: 15rem">
+    <div class="mt-auto"></div>
+    <h5>Table {{table_no}}</h5>
+    <p>Capacity: {{capacity}}</p>
+    <div class="mb-auto"></div>
+    <div class="fs-5 opacity-50">
+      <i class="ti ti-qrcode text-primary" style="cursor: pointer;"></i>
+      <i class="ti ti-trash text-danger" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal_close_{{table_no}}"></i>
+    </div>
+  </div>
+  <div class="modal" tabindex="-1" id="modal_close_{{table_no}}" hx-preserve>
+    <div class="modal-dialog">
+      <form class="modal-content" method="post" action="/dashboard/clerk/tables/delete/{{table_no}}">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Table {{table_no}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete table {{table_no}}?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{/each}}
+</div>
