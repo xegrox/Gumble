@@ -23,7 +23,7 @@
         <div class="row row-cols-2">
         {{#each products}}
             <div class="d-flex justify-content-around col">
-                <div class="card m-2">
+                <div class="card m-2" style="max-width:500px; max-height:500px;">
                     <img class="card-img-top" src="{{image}}" alt="Food">
                     <div class="card-img-overlay text-end">
                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editItemModal{{id}}">Edit</button>                    
@@ -63,15 +63,6 @@
                                 </li>
                                 <li class="list-group-item">
                                     <input type="number" step="0.01" id="editItemPrice" placeholder="Edit Item Price" name="price"> 
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="dropdown">
-                                        <select>
-                                            {{#each categories}}
-                                                <option>{{category}}</option>
-                                            {{/each}}
-                                        </select>
-                                    </div>
                                 </li>
                             </div> 
                         </div>
@@ -147,4 +138,8 @@
             </form>
         </div>
     </div>
+</div>
+
+<div class="position-absolute top-0 end-0" style="max-width: 200px;">
+    <button type="button" class="btn btn-danger">Delete Category</button>
 </div>
