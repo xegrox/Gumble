@@ -4,7 +4,7 @@ import { Order } from "models/order";
 import { OrderLine } from "models/order_line";
 import { Product } from "models/product";
 import { Table } from "models/table";
-
+import * as TableUids from 'helpers/table_uids'
 
 const router = Router()
 
@@ -38,6 +38,7 @@ router.post('/clear/:id', async (req, res) => {
   let table = await Table.findByPk(req.params.id)
   table.current_order_id = null
   await table.save()
+  TableUids.clearTableNo(req.params.id)
   res.redirect('/dashboard/clerk/invoices')
 })
 
