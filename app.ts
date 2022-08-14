@@ -13,31 +13,22 @@ import sessionSequelize from 'connect-session-sequelize'
 import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access'
 import Handlebars from 'handlebars'
 import cookie from 'cookie-parser'
-import { OrderStatus } from 'models/order_status';
+import setupDatabase from 'config/setupDatabase';
+import setupTestDatabase from 'config/setupTestDatabase';
+
+require('dotenv').config()
 
 const app = express();
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: 'database/database.sqlite',
+  storage: process.env.USE_TEST_DATA ? 'database/database_test.sqlite' : 'database/database.sqlite',
   models: [path.join(__dirname, 'models')],
   modelMatch: (filename, member) => _.upperFirst(_.camelCase(filename)) === member
 });
-Configuration.afterSync(() => Configuration.create({}, {ignoreDuplicates: true}).then())
-OrderStatus.afterSync(() => OrderStatus.bulkCreate([
-  {
-    id: 0,
-    description: 'pending'
-  },
-  {
-    id: 1,
-    description: 'ongoing'
-  },
-  {
-    id: 2,
-    description: 'done'
-  }
-], {ignoreDuplicates: true}).then())
-sequelize.sync()
+
+
+if (process.env.USE_TEST_DATA) setupTestDatabase(sequelize)
+else setupDatabase(sequelize)
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
