@@ -22,7 +22,10 @@ router.post('/', async (req, res) => {
 router.post('/view', async (req, res) => {
   res.render('dashboard/clerk/tables_view', {
     layout: 'main',
-    tables: await Table.findAll()
+    tables: (await Table.findAll()).map((table) => {
+      table['order_url'] = `${req.protocol}://${req.get('host')}/table/${table.table_no}`
+      return table
+    })
   })
 })
 

@@ -48,6 +48,7 @@ app.use("/js", express.static(path.join(__dirname, "node_modules/hyperscript.org
 app.use("/js", express.static(path.join(__dirname, "node_modules/htmx.org/dist")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/contrast-color/dist")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/chart.js/dist")));
+app.use("/js", express.static(path.join(__dirname, "node_modules/qrcode/build")));
 app.use("/icons", express.static(path.join(__dirname, "node_modules/@tabler/icons/iconfont")))
 app.use(cookie())
 
