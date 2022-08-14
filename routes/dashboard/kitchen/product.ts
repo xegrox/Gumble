@@ -42,10 +42,3 @@ router.post('/product/update/:id', async (req, res) =>{
 })
 
 export default router;
-        category: req.body.category,
-    })
-    res.redirect('/dashboard/kitchen/product/category')
-})
-
-export default router;
-
