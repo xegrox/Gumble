@@ -8,7 +8,7 @@
                 <ul class="dropdown-menu menuSelect">
                     <li>
                         {{#each categories}}
-                            <a class="dropdown-item" href="/dashboard/kitchen/product?category={{category}}">{{category}}</a>
+                            <a class="dropdown-item" href="/dashboard/kitchen/product?category={{id}}">{{category}}</a>
                         {{/each}}
                     </li>
                 </ul>
@@ -67,6 +67,7 @@
                             </div> 
                         </div>
                         <div class="modal-footer">
+                            <button type="button" hx-post="/dashboard/kitchen/product/delete/{{id}}" class="btn btn-danger position-absolute bottom-0 start-0">Delete Item</button>
                             <button type="submit" class="btn btn-info position-absolute bottom-0 end-0">Submit</button>
                         </div>
                     </form>
@@ -108,16 +109,15 @@
                     </li>
                     <li class="list-group-item">
                         <div class="dropdown">
-                            <select>
+                            <select name="category">
                                 {{#each categories}}
-                                    <option>{{category}}</option>
+                                    <option value="{{id}}">{{category}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </li>
                 </ul>
                 <div class="modal-footer">   
-                    <button type="button" class="btn btn-danger position-absolute bottom-0">Delete Item</button>
                     <button type="submit" class="btn btn-info position-absolute bottom-0 end-0">Add</button>
                 </div>
             </form>
